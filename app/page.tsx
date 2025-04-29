@@ -62,12 +62,12 @@ export default function Home() {
                   </Button>
                 </div>
 
-                <Tabs defaultValue="direct" className="w-full">
+                <Tabs defaultValue="send" className="w-full">
                   <TabsList className="grid grid-cols-4 w-full">
-                    <TabsTrigger value="direct">Direct Signer</TabsTrigger>
                     <TabsTrigger value="send">Send Transaction</TabsTrigger>
                     <TabsTrigger value="batched">Batched Txn</TabsTrigger>
                     <TabsTrigger value="sign">Sign Message</TabsTrigger>
+                    <TabsTrigger value="direct">Direct Signer</TabsTrigger>
                   </TabsList>
                   <TabsContent value="direct" className="mt-4">
                     <Card>

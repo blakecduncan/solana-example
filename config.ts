@@ -28,24 +28,29 @@ const uiConfig: AlchemyAccountsUIConfig = {
   },
 };
 
+console.log(process.env.NEXT_PUBLIC_SOLANA_CONNECTION_URL);
+console.log(process.env.NEXT_PUBLIC_ALCHEMY_API_KEY);
+console.log(process.env.NEXT_PUBLIC_ALCHEMY_POLICY_ID);
 export const config = createConfig(
   {
-    transport: alchemy({ apiKey: process.env.ALCHEMY_API_KEY ?? "" }), // TODO: add your Alchemy API key - https://dashboard.alchemy.com/accounts
+    transport: alchemy({
+      apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY ?? "",
+    }), // TODO: add your Alchemy API key - https://dashboard.alchemy.com/accounts
     chain: sepolia,
     ssr: true, // more about ssr: https://accountkit.alchemy.com/react/ssr
     storage: cookieStorage, // more about persisting state with cookies: https://accountkit.alchemy.com/react/ssr#persisting-the-account-state
     enablePopupOauth: true, // must be set to "true" if you plan on using popup rather than redirect in the social login flow
-    policyId: process.env.ALCHEMY_POLICY_ID ?? "",
+    policyId: process.env.NEXT_PUBLIC_ALCHEMY_POLICY_ID ?? "",
     solana: {
       connection: new Connection(
-        process.env.SOLANA_CONNECTION_URL ?? "",
+        process.env.NEXT_PUBLIC_SOLANA_CONNECTION_URL ?? "",
         {
           wsEndpoint: "wss://api.devnet.solana.com",
           commitment: "confirmed",
         }
       ),
       // Optional - gas sponsorship policy ID
-      policyId: process.env.ALCHEMY_POLICY_ID ?? "",
+      policyId: process.env.NEXT_PUBLIC_ALCHEMY_POLICY_ID ?? "",
     },
   },
   uiConfig

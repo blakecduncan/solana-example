@@ -5,6 +5,10 @@ import {
   useSignerStatus,
   useUser,
 } from "@account-kit/react";
+import SendTxnComponent from "./SendTxnComponent";
+import BatchedTxnComponent from "./BatchedTxnComponent";
+import SignMessageComponent from "./SignMessageComponent";
+import DirectSignerComponent from "./DirectSignerComponent";
 
 export default function Home() {
   const user = useUser();
@@ -18,6 +22,10 @@ export default function Home() {
         <>Loading...</>
       ) : user ? (
         <div className="flex flex-col gap-2 p-2">
+          <DirectSignerComponent />
+          <SendTxnComponent />
+          <BatchedTxnComponent />
+          <SignMessageComponent />
           <p className="text-xl font-bold">Success!</p>
           Logged in as {user.email ?? "anon"}.
           <button className="btn btn-primary mt-6" onClick={() => logout()}>
